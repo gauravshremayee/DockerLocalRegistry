@@ -7,7 +7,7 @@ $docker tag 540a289bab6c nginx:latest
 Where 540a289bab6c is docker id found with docker images
 
 # Create a Local Registry 
-$docker run -d -p 5001:5001 --restart=always --name registry1 registry:2
+$docker run -d -p 5000:5001 --restart=always --name registry1 registry:2
 
 $docker pull ubuntu:18.04
 
