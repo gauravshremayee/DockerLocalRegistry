@@ -11,9 +11,15 @@ Where 540a289bab6c is docker id found with docker images
 
 $docker run -d -p 5000:5000 --restart=always --name registry1 registry:2
 
+     if above doesn't work try similar to below:
+
+     docker run -d -p 5007:5000 --restart=always --name registry11 registry:2
+     
+     
+
 $docker pull ubuntu:18.04
 
-$docker tag ubuntu:18.04 localhost:5001/mylocal-ubuntu
+$docker tag ubuntu:18.04 localhost:5000/mylocal-ubuntu
 
 $docker push localhost:5000/mylocal-ubuntu
 
@@ -22,7 +28,8 @@ $docker image remove ubuntu:18.04
 $docker image remove localhost:5001/mylocal-ubuntu
 # Pull from local registry again (mention localhost:5000 otherwise it will fetch from remote ) 
 
-$docker pull localhost:5001/mylocal-ubuntu
+Note: export DOCKER_CONTENT_TRUST=0 Otherwise image might not be pulled
+$docker pull localhost:5000/mylocal-ubuntu
 
 $docker images | grep mylocal
 
